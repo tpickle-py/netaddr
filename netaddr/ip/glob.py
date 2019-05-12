@@ -76,6 +76,9 @@ def glob_to_iptuple(ipglob):
 
     :return: a tuple contain lower and upper bound IP objects.
     """
+    ## Checking for an instance of IPRange, if so pulling out the glob for further checking
+    if isinstance(ipglob,IPRange):
+        ipglob = ipglob.glob
     if not valid_glob(ipglob):
         raise AddrFormatError('not a recognised IP glob range: %r!' % ipglob)
 
